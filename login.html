@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #navbar {
+        width: 100vw;
+        padding: 2vw;
+        background-color: #333;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      ul {
+        list-style: none;
+      }
+      ul li {
+        display: inline;
+      }
+      #navbar > ul a {
+        padding: 0.5vw;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+      }
+      #cartIcon {
+        color: #fff;
+        margin: 0 2vw;
+      }
+      main {
+        width: 40vw;
+        margin: auto;
+        text-align: center;
+      }
+      #login_form {
+        width: 100%;
+        padding: 10px 20px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      #login_form input {
+        width: 70%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+      #login_form input:focus {
+        outline-color: aqua;
+      }
+      main button {
+        padding: 5px 15px;
+        font-size: 1.2rem;
+        color: #fff;
+        background-color: #333;
+        border-radius: 5px;
+      }
+      main button:hover {
+        background-color: brown;
+      }
+    </style>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <ul>
+          <li id="cartIcon">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="signup.html">Sign Up</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="" id="login_form">
+        <input type="email" id="email" name="email" placeholder="Enter email" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter Password"
+        />
+      </form>
+      <button onclick="checkLoginDetails()" type="submit">Login</button>
+    </main>
+  </body>
+</html>
+<script>
+  function checkLoginDetails() {
+    let login_form = document.getElementById("login_form");
+    let email = login_form.email.value;
+    let password = login_form.password.value;
+    if (email == "" || password == "") {
+      alert("Please fill all the credentials!");
+      return 0;
+    }
+    login_form.reset();
+
+    if (localStorage.getItem("storedUserDetails") == null) {
+      localStorage.setItem("storedUserDetails", JSON.stringify([]));
+    }
+
+    let storedUserDetails = JSON.parse(
+      localStorage.getItem("storedUserDetails")
+    );
+
+    for (let i = 0; i < storedUserDetails.length; i++) {
+      if (storedUserDetails[i].email == email) {
+        if (storedUserDetails[i].password == password) {
+          window.location.href = "index.html";
+        }
+      }
+    }
+  }
+</script>

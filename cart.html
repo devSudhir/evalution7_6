@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        width: 100vw;
+        padding: 1vw;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 2vw;
+      }
+      .soloDish {
+        width: 30vw;
+        border: 1px solid black;
+        text-align: center;
+      }
+      .soloDish img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+    <div>
+      <button onclick="checkOut()">CheckOut</button>
+    </div>
+  </body>
+</html>
+<script>
+  localStorage.setItem("getAllDish", JSON.stringify(dishes));
+  let getAllDishes = JSON.parse(localStorage.getItem("getAllDish"));
+  let main = document.getElementsByTagName("main")[0];
+  for (let i = 0; i < getAllDishes.length - 5; i++) {
+    let div = document.createElement("div");
+    div.setAttribute("class", "soloDish");
+    div.innerHTML = `<img src=${getAllDishes[i].image}><h2>Name:${getAllDishes[i].name}</h2><h3>Price:${getAllDishes[i].price}</h3><p>Description: ${getAllDishes[i].description}`;
+    main.appendChild(div);
+  }
+
+  /* function checkOut(){
+      setInterval(function(),2000)
+  } */
+</script>

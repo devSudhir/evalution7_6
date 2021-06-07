@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #navbar {
+        width: 100vw;
+        padding: 2vw;
+        background-color: #333;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      ul {
+        list-style: none;
+      }
+      ul * {
+        display: inline;
+      }
+      #navbar > ul a {
+        padding: 0.5vw;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+      }
+      #cartIcon {
+        color: #fff;
+        margin: 0 2vw;
+      }
+      main {
+        width: 100vw;
+        padding: 1vw;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 2vw;
+      }
+      .soloDish {
+        width: 30vw;
+        border: 1px solid black;
+        text-align: center;
+      }
+      .soloDish img {
+        width: 100%;
+      }
+      .soloDish button {
+        text-align: center;
+        padding: 10px;
+        color: white;
+        background-color: #333;
+      }
+      .soloDish button:hover {
+        background-color: tomato;
+      }
+    </style>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <ul>
+          <li id="cartIcon">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a><p id="para"></p></i>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="signup.html">Sign Up</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main></main>
+  </body>
+</html>
+<script>
+  let dishes = [
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "Biryani",
+      price: "1000",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "ABC",
+      price: "100",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "CDE",
+      price: "200",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "EFG",
+      price: "300",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "GHI",
+      price: "400",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "IJK",
+      price: "500",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "KLM",
+      price: "600",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "MNO",
+      price: "700",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+    {
+      image: "https://source.unsplash.com/1600x900/?food,dish",
+      name: "OPQ",
+      price: "800",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, nisi.",
+    },
+  ];
+  localStorage.setItem("getAllDish", JSON.stringify(dishes));
+  let getAllDishes = JSON.parse(localStorage.getItem("getAllDish"));
+  let main = document.getElementsByTagName("main")[0];
+  for (let i = 0; i < getAllDishes.length; i++) {
+    let div = document.createElement("div");
+    div.setAttribute("class", "soloDish");
+    div.innerHTML = `<img src=${getAllDishes[i].image}><h2>Name:${getAllDishes[i].name}</h2><h3>Price:${getAllDishes[i].price}</h3><p>Description: ${getAllDishes[i].description}</p><button onclick="addtoCart()">Add to cart</button>`;
+    main.appendChild(div);
+  }
+  let order = 0;
+  
+  
+  function addtoCart() {
+    let cartText = document.getElementById("para");    
+    para.textContent = ++order;
+
+  }
+</script>
